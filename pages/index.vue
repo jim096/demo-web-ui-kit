@@ -24,7 +24,7 @@
       <section class="mb-12 bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-xl">
         <div class="flex items-center flex-wrap gap-4">
           <TInput class="w-fit" v-model="searchQuery" placeholder="Tìm kiếm game theo tên..." size="md" color="primary"
-            leading-icon="i-heroicons-magnifying-glass" icon="magnifying-glass" :loading="true"
+            leading-icon="i-heroicons-magnifying-glass" icon="magnifying-glass" :loading="isLoadingSearch"
             @focus="handleSearchFocus" @input="simulateLoadingSearch" @keydown="handleSearchKeydown" />
           <TSelect class="w-fit" v-model="selectedGenre" :items="genreItems" placeholder="Chọn thể loại"
             color="secondary" variant="outline" size="md" @change="handleGenreChange" />
