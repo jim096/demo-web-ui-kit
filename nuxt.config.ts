@@ -8,24 +8,45 @@ export default defineNuxtConfig({
   
   modules: [
     '@nuxt/ui',
-    '@nuxtjs/color-mode'
+    '@nuxtjs/color-mode',
+    '@tema-software/platform-uikit'
   ],
-  
-  // Cấu hình UI
+
+  // Cấu hình @nuxt/ui
   ui: {
     global: true,
-    icons: ['heroicons']
+    icons: ['heroicons'],
+  },
+
+  colorMode: {
+    preference: 'system', // default theme
+    fallback: 'light',    // nếu browser không hỗ trợ
+    classSuffix: '',      // tránh tạo class kiểu `dark-mode`
   },
 
   // Import CSS
   css: [
-    '~/assets/css/main.css'
+    '@tema-software/platform-uikit/style',
+    '~/assets/css/main.css',
   ],
 
-  // Cấu hình PostCSS cho Tailwind v4
-  postcss: {
-    plugins: {
-      '@tailwindcss/postcss': {}
+  // Cấu hình build để include platform-uikit
+  build: {
+    transpile: ['@tema-software/platform-uikit']
+  },
+
+  // Cấu hình Vite
+  vite: {
+    optimizeDeps: {
+      include: ['@tema-software/platform-uikit']
     }
-  }
+  },
+
+  // Cấu hình components auto-import
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false
+    }
+  ]
 })
