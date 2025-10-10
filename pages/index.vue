@@ -24,7 +24,7 @@
       <section class="mb-12 bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-xl">
         <div class="flex items-center flex-wrap gap-4">
           <TInput class="w-fit" v-model="searchQuery" placeholder="Tìm kiếm game theo tên..." size="md" color="primary"
-            leading-icon="i-heroicons-magnifying-glass" icon="magnifying-glass" :loading="isLoadingSearch"
+            leading-icon="i-heroicons-magnifying-glass" icon="magnifying-glass" :loading="true"
             @focus="handleSearchFocus" @input="simulateLoadingSearch" @keydown="handleSearchKeydown" />
           <TSelect class="w-fit" v-model="selectedGenre" :items="genreItems" placeholder="Chọn thể loại"
             color="secondary" variant="outline" size="md" @change="handleGenreChange" />
@@ -137,14 +137,14 @@ const addEvent = (event: string) => {
 
 // Game Data
 const games = ref([
-  { id: 1, title: 'Super Mario Odyssey', genre: 'Platformer', platform: 'Nintendo Switch', description: 'Phiêu lưu qua các thế giới đa dạng.', image: 'https://via.placeholder.com/200x120?text=Mario', rating: 9.5 },
-  { id: 2, title: 'The Legend of Zelda', genre: 'Adventure', platform: 'Nintendo Switch', description: 'Khám phá thế giới mở rộng lớn.', image: 'https://via.placeholder.com/200x120?text=Zelda', rating: 9.8 },
-  { id: 3, title: 'Fortnite', genre: 'Battle Royale', platform: 'Multi', description: 'Chiến đấu sinh tồn với bạn bè.', image: 'https://via.placeholder.com/200x120?text=Fortnite', rating: 8.5 },
-  { id: 4, title: 'Minecraft', genre: 'Sandbox', platform: 'Multi', description: 'Xây dựng và sáng tạo vô tận.', image: 'https://via.placeholder.com/200x120?text=Minecraft', rating: 9.2 },
-  { id: 5, title: 'Genshin Impact', genre: 'RPG', platform: 'Multi', description: 'RPG hành động thế giới mở.', image: 'https://via.placeholder.com/200x120?text=Genshin', rating: 8.9 },
-  { id: 6, title: 'Among Us', genre: 'Social Deduction', platform: 'Multi', description: 'Phát hiện kẻ phản bội.', image: 'https://via.placeholder.com/200x120?text=Among+Us', rating: 8.0 },
-  { id: 7, title: 'Cyberpunk 2077', genre: 'RPG', platform: 'PC', description: 'Thế giới tương lai dystopian.', image: 'https://via.placeholder.com/200x120?text=Cyberpunk', rating: 8.7 },
-  { id: 8, title: 'The Witcher 3', genre: 'RPG', platform: 'Multi', description: 'Câu chuyện epic về phù thủy.', image: 'https://via.placeholder.com/200x120?text=Witcher', rating: 9.7 }
+  { id: 1, title: 'Super Mario Odyssey', genre: 'Platformer', platform: 'Nintendo Switch', description: 'Phiêu lưu qua các thế giới đa dạng.', image: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQrFOMEXeFPisA24Umoa9NRXoFNYj0W5D7itobz1LRRi_9X6LfY', rating: 9.5 },
+  { id: 2, title: 'The Legend of Zelda', genre: 'Adventure', platform: 'Nintendo Switch', description: 'Khám phá thế giới mở rộng lớn.', image: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTvv7AdnDOiUfeZAH4NWSNPqjMss3NSuo7nISf7Y3k4bskoR0ok', rating: 9.8 },
+  { id: 3, title: 'Fortnite', genre: 'Battle Royale', platform: 'Multi', description: 'Chiến đấu sinh tồn với bạn bè.', image: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRWExVCRY_WnwJm6uMxodgrSlBbot9x_LpO66UPwTrxVeJdI_TW', rating: 8.5 },
+  { id: 4, title: 'Minecraft', genre: 'Sandbox', platform: 'Multi', description: 'Xây dựng và sáng tạo vô tận.', image: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS8GqmyBiwcs2RvDreAHAs_fg5e8es-KYLzHM9NqA7nWuU6K705', rating: 9.2 },
+  { id: 5, title: 'Genshin Impact', genre: 'RPG', platform: 'Multi', description: 'RPG hành động thế giới mở.', image: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQA7cfIB0ayy8wIT3tQCNWrkO3yH6ounYhVU2rrtbAgITMNu4XD', rating: 8.9 },
+  { id: 6, title: 'Among Us', genre: 'Social Deduction', platform: 'Multi', description: 'Phát hiện kẻ phản bội.', image: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR0DAQQs3-EpvfldJOCh292_ueF3LgmNSzEa5itB7WHiKwBhD7W', rating: 8.0 },
+  { id: 7, title: 'Cyberpunk 2077', genre: 'RPG', platform: 'PC', description: 'Thế giới tương lai dystopian.', image: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSM0vv4cTvXHOMfYfmXSTPaasKG5HoqiDj4hlDizehQgBSBqzYX', rating: 8.7 },
+  { id: 8, title: 'The Witcher 3', genre: 'RPG', platform: 'Multi', description: 'Câu chuyện epic về phù thủy.', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgOPtH8lO6v8aRGGNpdEpaJgtR5GEO1UlnPv33E4-9hyPDQHa7', rating: 9.7 }
 ])
 
 // Reactive States
