@@ -46,7 +46,7 @@
       <div class="mb-8 p-4 bg-white/20 rounded-lg shadow">
         <div class="flex justify-between">
           <h3 class="text-lg font-semibold text-white mb-2">Nhật Ký Tương Tác</h3>
-          <TButton variant="solid" color="amber" @click="handleClearLogs">Clear logs</TButton>
+          <TButton variant="solid" color="amber" @click="handleClearLogs">Xóa nhật ký</TButton>
         </div>
         <div v-for="(event, index) in eventLog" :key="index" class="text-sm text-blue-100 mb-1">
           {{ event }}
