@@ -1,41 +1,41 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-blue-900 via-fuchsia-900 to-indigo-900 py-8 px-4 sm:px-6 lg:px-8">
+  <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8" :style="{ background: 'var(--bg-primary)' }">
     <div class="max-w-desktop mx-auto">
       <!-- Header -->
       <header class="text-center mb-12">
         <div class="flex justify-between mb-4">
           <div></div>
-          <h1 class="text-5xl font-bold text-white drop-shadow-lg">Game Portal Hub</h1>
-          <TSelect class="w-auto" v-model="selectedTheme" :items="themeItems" placeholder="Chọn theme" color="info"
+          <h1 class="text-5xl font-bold drop-shadow-lg text-neutral">Game Portal Hub</h1>
+          <GSelect class="w-auto" v-model="selectedTheme" :items="themeItems" placeholder="Chọn theme" color="info"
             variant="outline" size="md" @change="handleThemeChange" />
         </div>
-        <p class="text-xl text-blue-100">Khám phá và chơi hàng trăm tựa game đỉnh cao ngay tại đây!</p>
+        <p class="text-xl">Khám phá và chơi hàng trăm tựa game đỉnh cao ngay tại đây!</p>
         <div class="mt-6 flex justify-center space-x-4">
-          <TButton color="primary" size="lg" @click="handleSearchFocus">
+          <GButton color="primary" size="lg" @click="handleSearchFocus">
             Tìm Game
-          </TButton>
-          <TButton color="gray" variant="outline" size="lg" @click="favoritesOpen = !favoritesOpen">
+          </GButton>
+          <GButton color="secondary" variant="outline" size="lg" @click="favoritesOpen = !favoritesOpen">
             {{ favoritesOpen ? 'Đóng' : 'Yêu Thích' }}
-          </TButton>
+          </GButton>
         </div>
       </header>
 
       <!-- Search and Filters -->
-      <section class="mb-12 bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-xl">
+      <section class="mb-12 backdrop-blur-md rounded-xl p-6 shadow-xl">
         <div class="flex items-center flex-wrap gap-4">
-          <TInput class="w-fit" v-model="searchQuery" placeholder="Tìm kiếm game theo tên..." size="md" color="primary"
+          <GInput class="w-fit" inputRef="searchInput" v-model="searchQuery" placeholder="Tìm kiếm game theo tên..." size="md" color="primary"
             leading-icon="i-heroicons-magnifying-glass" icon="magnifying-glass" :loading="isLoadingSearch"
             @focus="handleSearchFocus" @input="simulateLoadingSearch" @keydown="handleSearchKeydown" />
-          <TSelect class="w-fit" v-model="selectedGenre" :items="genreItems" placeholder="Chọn thể loại"
+          <GSelect class="w-fit" v-model="selectedGenre" :items="genreItems" placeholder="Chọn thể loại"
             color="secondary" variant="outline" size="md" @change="handleGenreChange" />
-          <TSelect class="w-fit" v-model="selectedPlatform" :items="platformItems" placeholder="Chọn nền tảng"
+          <GSelect class="w-fit" v-model="selectedPlatform" :items="platformItems" placeholder="Chọn nền tảng"
             color="info" variant="outline" size="md" @change="handlePlatformChange" />
         </div>
       </section>
 
       <!-- Favorites Toggle -->
-      <section v-if="favoritesOpen" class="mb-12 bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-xl">
-        <h2 class="text-2xl font-semibold text-white mb-4">Game Yêu Thích</h2>
+      <section v-if="favoritesOpen" class="mb-12 backdrop-blur-md rounded-xl p-6 shadow-xl" :style="{ backgroundColor: 'var(--bg-secondary)', boxShadow: 'var(--shadow-lg)' }">
+        <h2 class="text-2xl font-semibold mb-4">Game Yêu Thích</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           <GameCard v-for="game in filteredFavorites" :key="game.id" :game="game" :is-favorite="true"
             @play="handlePlayGame" @toggle-favorite="handleToggleFavorite" />
@@ -43,12 +43,12 @@
       </section>
 
       <!-- Event Log -->
-      <div class="mb-8 p-4 bg-white/20 rounded-lg shadow">
+      <div class="mb-8 p-4 rounded-lg" :style="{ backgroundColor: 'var(--bg-tertiary)', boxShadow: 'var(--shadow-md)' }">
         <div class="flex justify-between">
-          <h3 class="text-lg font-semibold text-white mb-2">Nhật Ký Tương Tác</h3>
-          <TButton variant="solid" color="amber" @click="handleClearLogs">Xóa nhật ký</TButton>
+          <h3 class="text-lg font-semibold mb-2">Nhật Ký Tương Tác</h3>
+          <GButton variant="solid" color="warning" @click="handleClearLogs">Xóa nhật ký</GButton>
         </div>
-        <div v-for="(event, index) in eventLog" :key="index" class="text-sm text-blue-100 mb-1">
+        <div v-for="(event, index) in eventLog" :key="index" class="text-sm mb-1">
           {{ event }}
         </div>
       </div>
@@ -56,27 +56,27 @@
       <!-- Games Grid -->
       <section class="mb-12">
         <div class="flex justify-between items-center mb-6">
-          <h2 class="text-2xl font-semibold text-white">Danh Sách Game</h2>
-          <TButton color="green" variant="ghost" @click="loadMoreGames">
+          <h2 class="text-2xl font-semibold">Danh Sách Game</h2>
+          <GButton color="success" variant="ghost" @click="loadMoreGames">
             Tải Thêm
-          </TButton>
+          </GButton>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <GameCard v-for="game in filteredGames" :key="game.id" :game="game" :is-favorite="favorites.includes(game.id)"
             @play="handlePlayGame" @toggle-favorite="handleToggleFavorite" />
         </div>
         <div v-if="filteredGames.length === 0" class="text-center py-12">
-          <TAlert title="Không tìm thấy game" description="Hãy thử tìm kiếm khác hoặc thay đổi bộ lọc." color="warning"
+          <GAlert title="Không tìm thấy game" description="Hãy thử tìm kiếm khác hoặc thay đổi bộ lọc." color="warning"
             variant="soft" icon="i-heroicons-exclamation-triangle" />
         </div>
       </section>
 
       <UModal v-model:open="modalOpen" :title="selectedGame?.title || ''" :ui="{
         wrapper: 'z-50',
-        content: 'bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full',
-        header: 'p-4 border-b border-gray-200 dark:border-gray-700',
+        content: 'rounded-lg shadow-xl max-w-md w-full',
+        header: 'p-4 border-b',
         body: 'p-4',
-        footer: 'p-4 border-t border-gray-200 dark:border-gray-700 flex justify-end space-x-2'
+        footer: 'p-4 border-t flex justify-end space-x-2'
       }">
         <!-- Body: Hình ảnh và thông tin chi tiết -->
         <template #body>
@@ -149,6 +149,7 @@ const games = ref([
 
 // Reactive States
 const searchQuery = ref('')
+const searchInput = ref<HTMLInputElement | null>(null)
 const debouncedSearchQuery = ref('')
 const selectedGenre = ref('')
 const selectedPlatform = ref('')
@@ -204,7 +205,12 @@ const themeItems = [
 
 
 // Handlers
-const handleSearchFocus = () => addEvent('Tìm kiếm được focus')
+const handleSearchFocus = () => {
+  addEvent('Tìm kiếm được focus')
+  if(searchInput.value) {
+    searchInput.value.focus()
+  }
+}
 const handleSearchKeydown = (event: KeyboardEvent) => addEvent(`Nhấn phím tìm kiếm: ${event.key}`)
 const handleGenreChange = (event: Event) => addEvent(`Thay đổi thể loại: ${selectedGenre.value}`)
 const handlePlatformChange = (event: Event) => addEvent(`Thay đổi nền tảng: ${selectedPlatform.value}`)

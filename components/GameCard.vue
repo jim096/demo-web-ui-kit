@@ -1,18 +1,18 @@
 <template>
-    <TCard
+    <GCard
         class="bg-white/20 backdrop-blur-md rounded-xl p-4 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
         <img :src="props.game.image" :alt="props.game.title" class="w-full h-32 object-cover rounded-lg mb-3" />
-        <h3 class="text-lg font-semibold text-white mb-2">{{ props.game.title }}</h3>
-        <p class="text-sm text-blue-100 mb-2">{{ props.game.genre }} - {{ props.game.platform }}</p>
+        <h3 class="text-lg font-semibold text-primary mb-2">{{ props.game.title }}</h3>
+        <p class="text-sm text-neutral mb-2">{{ props.game.genre }} - {{ props.game.platform }}</p>
         <div class="flex justify-between items-center mb-3">
             <span class="text-yellow-400 font-medium">★ {{ props.game.rating }}</span>
-            <TCheckbox v-model="localFavorite" size="sm" color="warning" variant="card" indicator="end"
+            <GCheckbox v-model="localFavorite" size="sm" color="warning" indicator="end"
                 label="Yêu thích" @change="handleToggleFavorite"/>
         </div>
-        <TButton block color="primary" size="md" icon="i-heroicons-play" @click="handlePlay">
+        <GButton block color="primary" size="md" icon="i-heroicons-play" @click="handlePlay">
             Chơi
-        </TButton>
-    </TCard>
+        </GButton>
+    </GCard>
 </template>
 
 <script setup lang="ts">

@@ -1,12 +1,3 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
-
-@custom-variant dark (&:where(.dark, .dark *));
-
-@theme {
-    --ui-text: var(--color-neutral-700)
-}
-
-.dark {
-    --ui-text: var(--color-neutral-200)
-}
+@import "./themes/brazil.css" layer(theme); /* use theme layer to override default theme */

@@ -1,0 +1,85 @@
+@theme {
+    /* Colors - UK theme with sophisticated colors */
+    --ui-primary: var(--color-blue-500);
+    --ui-secondary: var(--color-indigo-500);
+    --ui-accent: var(--color-purple-400);
+    --ui-success: var(--color-emerald-500);
+    --ui-warning: var(--color-amber-500);
+    --ui-error: var(--color-rose-500);
+    
+    /* Typography - UK elegant fonts */
+    --font-body: 'Inter', 'Helvetica Neue', sans-serif;
+    --font-heading: 'Inter', 'Helvetica Neue', sans-serif;
+    --font-mono: 'SF Mono', 'Monaco', monospace;
+    
+    /* Font sizes - Compact sizes for UK */
+    --text-xs: 0.75rem;     /* 12px */
+    --text-sm: 0.875rem;    /* 14px */
+    --text-base: 1rem;      /* 16px */
+    --text-lg: 1.125rem;    /* 18px */
+    --text-xl: 1.25rem;     /* 20px */
+    --text-2xl: 1.5rem;     /* 24px */
+    --text-3xl: 1.875rem;   /* 30px */
+    
+    /* Spacing - Minimal spacing */
+    --spacing-xs: 0.125rem;  /* 2px */
+    --spacing-sm: 0.25rem;   /* 4px */
+    --spacing-md: 0.5rem;    /* 8px */
+    --spacing-lg: 1rem;      /* 16px */
+    --spacing-xl: 1.5rem;    /* 24px */
+    --spacing-2xl: 2rem;     /* 32px */
+    
+    /* Border radius - Minimal rounded corners */
+    --radius-sm: 0.25rem;    /* 4px */
+    --radius-md: 0.375rem;   /* 6px */
+    --radius-lg: 0.5rem;     /* 8px */
+    --radius-xl: 0.75rem;    /* 12px */
+    --radius-full: 9999px;
+    
+    /* Shadows - Subtle shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.15);
+    
+    /* Animation - Quick transitions */
+    --transition-fast: 0.1s ease-out;
+    --transition-normal: 0.2s ease-out;
+    --transition-slow: 0.3s ease-out;
+    
+    /* Background colors - Light theme */
+    --bg-primary: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #e2e8f0;
+    
+    /* Text colors */
+    --text-primary: var(--color-slate-900);
+    --text-secondary: var(--color-slate-600);
+    --text-tertiary: var(--color-slate-500);
+}
+
+.dark {
+    /* Dark mode colors for UK */
+    --ui-primary: var(--color-blue-400);
+    --ui-secondary: var(--color-indigo-400);
+    --ui-accent: var(--color-purple-300);
+    --ui-success: var(--color-emerald-400);
+    --ui-warning: var(--color-amber-400);
+    --ui-error: var(--color-rose-400);
+    
+    /* Dark backgrounds - UK dark theme */
+    --bg-primary: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #4c1d95 100%);
+    --bg-secondary: #1e3a8a;
+    --bg-tertiary: #7c3aed;
+    
+    /* Dark text colors */
+    --text-primary: var(--color-slate-100);
+    --text-secondary: var(--color-slate-300);
+    --text-tertiary: var(--color-slate-400);
+    
+    /* Dark shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.35);
+}
