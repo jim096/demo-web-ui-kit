@@ -73,7 +73,7 @@
 
       <UModal v-model:open="modalOpen" :title="selectedGame?.title || ''" :ui="{
         wrapper: 'z-50',
-        content: 'rounded-lg shadow-xl max-w-md w-full',
+        content: 'rounded-lg shadow-xl max-w-[500px] w-full',
         header: 'p-4 border-b',
         body: 'p-4',
         footer: 'p-4 border-t flex justify-end space-x-2'
@@ -83,7 +83,7 @@
           <div class="flex items-start space-x-4">
             <img :src="selectedGame?.image || ''" :alt="selectedGame?.title || ''"
               class="w-16 h-16 rounded-lg flex-shrink-0" />
-            <div class="flex-1 min-w-0">
+            <div class="flex-1">
               <p class="text-gray-900 dark:text-white mb-2 text-sm">
                 Thể loại: {{ selectedGame?.genre || 'N/A' }}
               </p>
